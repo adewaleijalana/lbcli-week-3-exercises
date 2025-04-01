@@ -5,4 +5,4 @@ public_keys=$(bitcoin-cli -regtest decoderawtransaction "$transaction" | jq '[.v
 # echo $public_keys
 
 address=$(bitcoin-cli -regtest -named createmultisig nrequired=1 keys="$public_keys" | jq '.address')
-echo $address
+echo ${address//\"/}
